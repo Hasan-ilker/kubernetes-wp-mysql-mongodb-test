@@ -1,0 +1,50 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: test
+  name: junior-role
+rules:
+  - apiGroups: [""]
+    resources: ["*"]
+    verbs: ["get", "list", "create", "update", "delete"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: production
+  name: junior-read-only-role
+rules:
+  - apiGroups: [""]
+    resources: ["*"]
+    verbs: ["get", "list"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test
+  name: junior-rolebinding
+subjects:
+  - kind: Group
+    name: junior
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: junior-role
+  apiGroup: rbac.authorization.k8s.io
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: production
+  name: junior-read-only-rolebinding
+subjects:
+  - kind: Group
+    name: junior
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: junior-read-only-role
+  apiGroup: rbac.authorization.k8s.io
