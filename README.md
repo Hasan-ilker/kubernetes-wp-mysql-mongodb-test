@@ -1,7 +1,6 @@
 # Kubernetes Test Project
 
-## 📖 About the Project
-This project was created to learn and demonstrate application management, configuration, and deployment processes on Kubernetes. The project can be used to showcase Kubernetes knowledge and skills during job interviews.
+
 
 The following tasks were completed as part of this project:
 - **Namespace Management:** Creation of `test` and `production` namespaces.
